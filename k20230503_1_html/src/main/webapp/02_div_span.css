@@ -1,0 +1,14 @@
+div {
+		background-color: pink;
+		width: 200px;
+		height: 50px;
+		margin: 20px; /* 바깥여백 */
+		padding: 20px; /* 안여백 */
+	}
+	span {
+		background-color: lavender;
+		width: 200px;
+		height: 50px;
+		margin: 20px; /* 바깥여백 */
+		padding: 20px; /* 안여백 */
+	}

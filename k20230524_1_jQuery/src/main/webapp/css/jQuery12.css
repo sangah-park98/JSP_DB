@@ -1,0 +1,13 @@
+a {
+	color: black;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#box {
+	width: 100px;
+	height: 100px;
+	background-color: pink;
+	position: relative; /* 자기 자신의 위치에서부터 시작 */
+}
+

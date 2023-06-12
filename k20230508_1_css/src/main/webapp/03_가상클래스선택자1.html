@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>가상 클래스 선택자</title>
+<style type="text/css">
+
+	/* ":"이 가상 클래스 선택자이다. */
+	/* hover: 선택자에 마우스 포인터가 올라가 있는 동안에만 선택된다. */
+	a:hover {
+		color: lime;
+		font-weight: bold;
+		font-size: 20pt;
+		font-family: SB 어그로;
+	}
+	.box1 {
+		width: 100px;
+		height: 100px;
+		background-color: lavender;
+	}
+	.box1:hover {
+		width: 200px;
+		background-color: pink;
+		transition-duration: 2s; /* 애니메이션 실행시간, 단위는 초 뒤에 "s"를 붙인다. */
+	}
+	
+	/* active: 선택자를 마우스로 누르고 있는 동안에만 선택된다. */
+	.box2 {
+		width: 100px;
+		height: 100px;
+		background-color: lightblue;
+	}
+	.box2:active {
+		width: 200px;
+		background-color: grey;
+		transition-duration: 2s; 
+	}
+	
+	/* focus: 선택자가 포커스된 동안에만 선택된다. 
+			  대화형 컨텐츠(input, img, tabindex)에서 사용 가능하다.
+			  
+	*/
+	
+	/* input 태그는 outline으로 선의 외곽선이 들어간다. */
+	input {
+		width: 100px;
+		background-color: lightpink;
+		outline: none; /* input 태그의 border 외곽선을 설정한다. */
+		border: 3px solid black; 
+		padding: 5px 10px; /* 위아래 좌우 */
+	}
+	input:focus {
+		width: 200px;
+		background-color: ivory;
+		border: 3px solid black;
+		transition-duration: 2s;
+ 	}
+ 	
+ 	/* first-child: 선택자가 형제 요소 중 첫 번째 요소라면 선택한다. */
+ 	.fruits > li:first-child {
+ 		color: red;
+ 	}
+ 	/* last-child: 선택자가 형제 요소 중 마지막 요소라면 선택한다. */
+ 	.fruits > li:last-child {
+ 		color: blue;
+ 	}
+	
+</style>
+</head>
+<body>
+
+<a href="https://www.naver.com">NAVER</a>
+<div class="box1"></div>
+<div class="box2"></div>
+<input type="text"/><br/>
+
+<ul class="fruits">
+	<li>딸기</li> <!-- first child -->
+	<li>수박</li>
+	<li>오렌지</li>
+	<li>망고</li>
+	<li>사과</li> <!-- last child -->
+</ul>
+
+</body>
+</html>

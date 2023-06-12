@@ -1,0 +1,18 @@
+ul {
+	list-style: none;
+}
+
+.main_menu > li {
+	width: 250px;
+	background-color: pink;
+}
+
+.sub_menu1 {
+	cursor: pointer;
+	border: 3px solid white;
+}
+
+.sub_menu2 {
+	display: none;
+}
+

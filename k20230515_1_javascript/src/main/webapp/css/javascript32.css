@@ -1,0 +1,34 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	
+}
+
+#colorBox {
+	width: 300px;
+	height: 300px;
+	border: 1px solid black;
+	position: relative ; /* 다른 요소들과 겹치지 않는 절대적인 부모틀 */
+}
+
+#red, #blue, #yellow, #black {
+	width: 150px;
+	height: 150px;
+	border: 1px solid dodgerblue;
+	position: absolute; /* 다른 요소들과 유동적으로 움직이는 자식틀 */
+	
+}
+
+#blue {
+	left: 150px;
+}
+
+#yellow {
+	right: 150px;
+	top: 150px;
+}
+
+#black {
+	left: 150px;
+	top: 150px;
+}

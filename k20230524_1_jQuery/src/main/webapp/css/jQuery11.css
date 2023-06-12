@@ -1,0 +1,19 @@
+/*  { font-family: 'IM혜민'}; */
+
+img {
+	width: 200px;
+	position: absolute;
+	left: 200px;
+	top: 100px;
+}
+
+p {
+	width: 150px;
+	border: 2px solid skyblue;
+	cursor: pointer;
+	line-height: 30px;
+	padding-left: 10px;
+	position: absolute;
+	left: 10px;
+	display: none;
+}

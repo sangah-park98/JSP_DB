@@ -1,0 +1,48 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	width: 1000px;
+	margin: 50px auto;
+}
+
+fieldset {
+	width: 250px;
+	height: 50px;
+	padding: 10px;
+	margin: 20px;
+}
+
+input {
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+table {
+	width: 800px;
+	border: 1px solid black; 
+	align-content: center;
+	text-align: center;
+}
+
+td {
+	padding: 5px 10px;
+}
+
+th {
+	padding: 5px 10px;
+}
+
+table tr:nth-child(odd) {
+	background-color: pink;
+
+}
+
+table tr:nth-child(even) {
+	background-color: lavender;
+}
+
+
+

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>flex 개요</title>
+<style type="text/css">
+
+	/* div 태그 수평 배치 - 1 */
+	.container1 {
+		border: 3px solid red;
+		font-size: 0px;
+	}	
+	.container1 > .item1 {
+		width: 100px;
+		height: 100px;
+		border: 3px solid gray;
+		border-radius: 10px;
+		font-size: 25pt;
+		/* block 요소는 수평으로 정렬할 수 없으므로 display: inline-block으로 지정한다. */
+		display: inline-block;
+	}
+	
+	/* div 태그 수평 배치 - 2 */
+	.container2 {
+		border: 3px solid red;
+		font-size: 0px;
+	}	
+	.container2 > .item2 {
+		width: 100px;
+		height: 100px;
+		border: 3px solid gray;
+		font-size: 25pt;
+		border-radius: 10px;
+		/* float 속성을 지정해서 요소를 띄우면 컨테이너에 아무것도 없기 때문에 컨테이너 공간이 사라진다. */
+		float: left;
+	}
+		/* 공간이 사라진 컨테이너에 공간을 만들고 float를 끊어준다. */
+		.clearfix::after {
+			content: "";
+			clear: both;
+			display: block;
+		}
+		
+	/* div 태그 수평 배치 - 3 */
+	.container3 {
+		border: 3px solid red;
+		display: flex;
+	}	
+	.container3 > .item3 {
+		width: 100px;
+		height: 100px;
+		border: 3px solid gray;
+		border-radius: 10px;
+		font-size: 25pt;
+	
+	}
+	
+	
+</style>
+</head>
+<body>
+<div class="container1">
+	<div class="item1">1</div>
+	<div class="item1">2</div>
+	<div class="item1">3</div>
+</div><br/>
+
+<div class="container2 clearfix">
+	<div class="item2">1</div>
+	<div class="item2">2</div>
+	<div class="item2">3</div>
+</div><br/>
+
+</div>
+<div class="container3">
+	<div class="item3">1</div>
+	<div class="item3">2</div>
+	<div class="item3">3</div>
+</div>
+
+</body>
+</html>

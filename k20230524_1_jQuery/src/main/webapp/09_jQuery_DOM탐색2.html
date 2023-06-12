@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery - DOM탐색</title>
+
+<script type="text/javascript" src="./js/jquery-3.7.0.js"></script>
+<script defer="defer" type="text/javascript" src="./js/jQuery09.js"></script>
+
+
+</head>
+<body>
+
+	<h2>DOM 탐색 메소드</h2>
+	
+	<div>
+		<b>find('선택자'): 선택된 요소 중에서 선택자로 지정한 요소를 찾는다.</b><br/>
+		<b>children('선택자'): 선택된 요소의 자식 요소 중에서 선택자로 지정한 자식 요소를 찾는다.</b><br/> 
+		<b>parent(): 선택된 요소의 부모 요소를 찾는다.</b><br/>
+		<b>parents('선택자'): 선택된 요소의 부모 요소 중에서 선택자로 지정한 조상 요소를 찾는다.</b><br/>
+		<b>next(): 선택된 요소의 바로 다음 형제 요소를 찾는다.</b><br/>
+		<b>prev(): 선택된 요소의 바로 이전 형제 요소를 찾는다.</b><br/>
+	</div>
+	
+	<div>
+		<p>
+			<b>손오공</b>
+		</p>
+		<p id="chd">손오반</p>
+		<p>
+			무천도사
+			<span>크리닝</span>
+		</p>
+		<p>마인부우</p>
+		<p>
+			<b>피콜로</b>
+		</p>
+	</div>
+	
+	<input type="button" value="돌아가기" onclick="history.back()"/><br/>
+
+</body>
+</html>

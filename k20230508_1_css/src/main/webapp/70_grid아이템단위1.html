@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>grid 아이템 단위</title>
+<style type="text/css">
+
+	/*  
+		fr: fr(fractional unit)은 사용 가능한 공간에 대한 비율을 의미한다.
+		min-content: 아이템이 포함하는 내용의 최소 크기를 지정한다.
+		max-content: 아이템이 포함하는 내용의 최대 크기를 지정한다.
+	*/
+	.container1 {
+		width: 900px;
+		height: 200px;
+		border: 3px solid black;
+		display: grid;
+		
+		/*  
+			고정 크기를 가장 먼저 할당하기 때문에 3열에 100px을 할당한다.
+			4열에 전체 900px 중에서 3열에 할당한 100px을 제외한 800px의 25%를 할당한다.
+			공간 분할을 가장 마지막에 할당하기 때문에 3, 4열을 할당하고 남은 공간 중에서 1열을 1/3 할당하고 2열에 2/3를 할당한다.
+			
+		*/
+		
+		grid-template-columns: 1fr 2fr 100px 25%;
+	}
+	.container1 > .item1 {
+		border: 3px solid pink;
+		display: flex;
+		justify-content: center;
+		align-items: center; 
+		
+	}
+	.container2 {
+		width: 900px;
+		height: 200px;
+		border: 3px solid black;
+		display: grid;
+		/* grid-template-columns: max-content 1fr; */ /* 전체 문장 길이 */
+		grid-template-columns: min-content 1fr; /* 가장 긴 단어 길이 */
+		
+	}
+	.container2 > .item2 {
+		border: 3px solid pink;
+		
+	}
+	.container3 {
+		width: 900px;
+		height: 200px;
+		border: 3px solid black;
+		display: grid;
+		/* min-content는 영문은 단어 단위로 설정되는데 한글은 단어 단위가 아닌 음절 단위로 크기를 잡는다. */
+		grid-template-columns: min-content 1fr; /* 가장 긴 단어 길이 */
+		/* 한글에 정상적으로 min-content가 단어 단위로 적용되게 하렴녀 아래의 속성을 추가해야 한다. */
+		word-break: keep-all;
+		
+	}
+	.container3 > .item3 {
+		border: 3px solid pink;
+		
+	}
+</style>
+</head>
+<body>
+<div class="container1">
+	<div class="item1">1</div>
+	<div class="item1">2</div>
+	<div class="item1">3</div>
+	<div class="item1">4</div>
+</div><br/>
+<div class="container2">
+	<div class="item2">Hello world</div>
+	<div class="item2">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+	<div class="item2">3</div>
+	<div class="item2">4</div>
+</div><br/>
+<div class="container3">
+	<div class="item3">오늘은 즐거운 금요일 내일은 더 즐거운 주말 내일 모레는 일요일 아이스아메리카노</div>
+	<div class="item3">2</div>
+	<div class="item3">3</div>
+	<div class="item3">4</div>
+</div><br/>
+</body>
+</html>

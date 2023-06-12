@@ -1,0 +1,21 @@
+a {
+	
+	text-decoration: none;
+	color: hotpink;
+}
+
+
+.menu {
+
+	width: 150px;
+	border: 1px solid black;
+	background-color: black;
+	transition: 0.5s;
+	text-align: center;
+}
+
+.menu:hover {
+	width: 200px;
+	background-color: white;
+	text-align: left;
+}

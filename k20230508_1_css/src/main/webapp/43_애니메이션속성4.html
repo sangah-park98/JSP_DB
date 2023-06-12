@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>애니메이션 - 전후 위치</title>
+<style type="text/css">
+
+	/*  
+		animation-fill-mode: 애니메이션 전후 상태(위치)를 설정한다. none이 기본값
+			=> none: 기본값, 기존 위치에서 시작 => 애니메이션 시작 위치로 이동 => 실행 => 기존 위치로 복귀
+			=> forwards: 기존 위치에서 시작 => 애니메이션 시작 위치로 이동 => 실행 => 애니메이션 끝 위치에서 끝
+			=> backwards: 애니메이션 시작위치에서 시작 => 실행 => 기존위치로 복귀
+			=> both: 애니메이션 시작위치에서 시작 => 실행 => 애니메이션 끝 위치에서 끝	
+	*/
+	.box {
+		width: 100px;
+		height: 100px;
+		background-color: pink;
+		border-radius: 10px;
+		margin: 20px;
+	
+		 
+		animation-name: fill;
+		animation-duration: 1s;
+		animation-timing-function: linear;
+		animation-delay: 0s;
+		animation-iteration-count: 1;
+		animation-direction: normal;
+		animation-fill-mode: both;
+ 		/* animation: fill 1s linear 0s 1 normal both; /* 단축 속성 */ 
+ 	}
+ 	
+ 	@keyframes fill {
+		0% { 
+			transform: translate(100px, 100px);
+			background-color: pink;
+		}
+		100% { 
+			transform: translate(300px, 100px);
+			background-color: lavender;
+		}
+	}	
+</style>
+</head>
+<body>
+
+<div class="box"></div>
+
+
+</body>
+</html>

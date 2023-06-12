@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>table</title>
+<link rel="stylesheet" href="./css/23_tableStyle.css">
+</head>
+<body>
+
+<!--  
+	<table> 태그는 행과 열로 이루어진 표를 만든다.
+	width 속성은 표의 전체 너비를 지정한다.
+	border 속성은 표의 전체 선 두께를 지정한다.
+	align 속성은 표의 정렬 방식을 지정한다.
+	cellspacing 속성은 표를 구성하는 선과 선 사이의 여백을 지정한다. 셀과 셀 사이의 간격
+	cellpadding 속성은 표를 구성하는 선과 셀 내부에 입력된 내용과의 여백을 지정한다. 안여백
+	bgcolor 속성은 표 전체의 배경색을 지정한다.
+	
+	<tr> 태그는 표를 구성하는 행을 만든다.
+	height 속성은 행의 높이를 지정한다.
+	bgcolor 속성은 행 전체의 배경색을 지정한다.
+	
+	<th> 태그는 행을 구성하는 열을 만든다. 첫 줄(머리글 행)이나 첫 열을 만든다. 텍스트가 굵게, 가운데 정렬된다.
+	colspan 속성은 열을 합친다.
+	rowspan 속성은 행을 합친다.
+	width 속성은 열의 전체 너비를 지정한다.
+	bgcolor 속성은 열의 배경색을 지정한다.
+	
+	<td> 태그는 행을 구성하는 열을 만든다. <th> 태그로 만든 열을 제외한 나머지 열을 만든다.
+	colspan 속성은 열을 합친다.
+	rowspan 속성은 행을 합친다.
+	width 속성은 열의 전체 너비를 지정한다.
+	bgcolor 속성은 열의 배경색을 지정한다.
+	align 속성은 열 내부의 정렬 방식을 지정한다.
+	
+-->
+
+<table width="500" border="1" align="center" cellspacing="0" cellpadding="5" bgcolor="pink">
+
+	<tr height="50">
+		<th colspan="2">
+			데이터
+		</th>
+	</tr>
+	<tr height="50" bgcolor="lavender">
+		<td width="150" align="center" bgcolor="lightblue">타입</td>
+		<td width="350" align="center">값</td>
+	</tr>
+	<tr height="50" bgcolor="lavender">
+		<td align="center" bgcolor="lightblue">알파벳</td>
+		<td align="center">A</td>
+	</tr>
+	<tr height="50" bgcolor="lavender">
+		<td align="center" bgcolor="lightblue">숫자</td>
+		<td align="center">0</td>
+	</tr>
+
+</table><br><br>
+
+<table id="table" border="1" align="center">
+	<tr class="tr">
+		<th class="th" rowspan="2">데이터</th>
+		<td class="td">타입</td>
+		<td class="td">알파벳</td>
+		<td class="td">숫자</td>
+	</tr class="tr">
+	<tr>
+		<td class="td2">값</td>
+		<td class="td2">숫자</td>
+		<td class="td2">0</td>
+	</tr>
+
+</table>
+
+
+</body>
+</html>
