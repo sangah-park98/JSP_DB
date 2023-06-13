@@ -41,16 +41,16 @@
 		조건식이 참일 경우 실행할 문장
 	</c:if>
 	
-	jstl 일반 for문: 초기치 부터 최종치 까지 증가치 만큼 증가하며 반복한다.
-		=> 증가치는 생략하면 1이 기본값으로 사용되고 반드시 양수만 사용해야 한다.
-	<c:forEach var="변수이름" begin="초기치" end="최종치" [step="증가치"]>
-		반복할 문장
-	</c:forEach>
+	jstl 일반 for문: 초기치 부터 최종치까지 증가치만큼 증가하며 반복한다.
+					 증가치는 생략하면 1이 기본값으로 사용되고 반드시 양수만 사용해야 한다.
+					 <c:forEach var="변수이름" begin="초기치" end="최종치" [step="증가치"]>
+							반복할 문장
+					 </c:forEach>
 	
 	jstl 향상된 for문: 객체에 저장된 내용이 변수에 처음 부터 마지막 까지 차례대로 대입되며 반복한다.
-	<c:forEach var="변수이름" items=${배열이나 List 형태의 객체}>
-		반복할 문장
-	</c:forEach>
+					   <c:forEach var="변수이름" items=${배열이나 List 형태의 객체}>
+							반복할 문장
+					   </c:forEach>
 	
 	jstl 함수 사용하기
 	${fn:함수이름(인수)}
@@ -58,8 +58,8 @@
 	jstl 날짜 서식 => 날짜 서식을 지정하는 방법은 자바와 같다.
 	<fmt:formatDate value=${날짜 데이터} pattern="날짜서식"></fmt:formatDate>
 --%>
-
 <c:set var="view" value="${guestbookList.list}"></c:set>
+
 <table width="1000" border="1" align="center" cellpadding="5" cellspacing="0">
 	<tr>
 		<th style="background-color: mistyRose">♥ 방명록 보기 ♥</th>
@@ -71,7 +71,6 @@
 	</tr>
 	<tr>
 		<td>
-		
 			<!-- 테이블에 저장된 글이 없으면 없다고 출력한다. -->
 			<c:if test="${view.size() == 0}">
 				<marquee>테이블에 저장된 글이 없습니다.</marquee>
@@ -133,7 +132,13 @@
 								<c:set var="memo" value="${fn:replace(vo.memo, '<', '&lt;')}"></c:set>
 								<c:set var="memo" value="${fn:replace(memo, '>', '&gt;')}"></c:set>
 								<c:set var="memo" value="${fn:replace(memo, enter, '<br/>')}"></c:set>
+								
+								<!-- 내용에 포함된 검색어를 강조해서 표시한다. -->
+								<c:if test="${category == null || category == '이름'}"></c:if>
 								${memo}
+								<c:if test="${category == '내용' || category == '내용+이름'}"></c:if>
+									<c:set var="search" value="<span>${item}</span>"/>
+									${fn:replace(memo, item, search)}
 							</td>						
 						</tr>
 					</table>
@@ -238,6 +243,25 @@
 				>끝</button>
 			</c:if>
 			
+		</td>
+	</tr>
+	<!-- 카테고리별 검색어를 입력받는다. -->
+	<tr>
+		<td align="center">
+			<form action="list.jsp" method="post">
+				<select name="category" style="width: 100px; height: 30px;">
+					<option>내용</option>
+					<option>이름</option>
+					<option>내용+이름</option>
+				</select>
+				<input 
+					type="text" 
+					name="item"
+					placeholder="${item}"  
+					style="width: 200px; height: 25px; padding-left: 10px;"/>
+					<!-- value를 지정하면 아래 내용이 화면창이 바뀌어도 검색내용이 남아있다. -->
+				<input class="button button3" type="submit" value="검색"/>
+			</form>
 		</td>
 	</tr>
 

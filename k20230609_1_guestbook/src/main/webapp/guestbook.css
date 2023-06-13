@@ -49,3 +49,8 @@
 	  color: black; 
 	  border: 1px solid black;
 	}
+	
+	span {
+		color: palevioletred;
+		font-weight: bold;
+	}

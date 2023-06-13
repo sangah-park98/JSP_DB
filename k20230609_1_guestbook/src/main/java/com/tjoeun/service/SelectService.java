@@ -7,6 +7,8 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tjoeun.dao.GuestbookDAO;
 import com.tjoeun.ibatis.MyAppSqlConfig;
 import com.tjoeun.vo.GuestbookList;
+import com.tjoeun.vo.GuestbookVO;
+import com.tjoeun.vo.Param;
 
 public class SelectService {
 
@@ -64,8 +66,120 @@ public class SelectService {
 			e.printStackTrace();
 		}
 		
+		return guestbookList;
+	}
+	
+//	selectByIdx.jsp에서 호출되는 수정 또는 삭제할 글번호를 넘겨받고 mapper를 얻어온 후 guestbookDAO 클래스의
+//	글 1건을 얻어오는 메소드를 호출하는 메소드	
+	public GuestbookVO selectByIdx(int idx) {
+		System.out.println("SelectService 클래스의 selectByIdx() 메소드 실행");
+		SqlMapClient mapper = MyAppSqlConfig.getSqlMapInstance();
+		
+		// 글 1건을 얻어와서 저장한 후 리턴시킬 객체를 선언한다.
+		GuestbookVO vo = null;
+		try {
+			vo = GuestbookDAO.getInstance().selectByIdx(mapper, idx);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return vo;
+	}
+
+//	list.jsp에서 호출되는 브라우저에 표시할 페이지 번호(currentPage)와 검색어(내용)를 넘겨받고 mapper를 얻어온 후
+//	GuestbookDAO 클래스의 1페이지 분량의 검색어를 포함하는 글 목록을 얻어오는 select sql 명령을 실행하는 메소드를 호출하는 메소드	
+	public GuestbookList selectListMemo(int currentPage, String item) {
+		System.out.println("SelectService 클래스의 selectListMemo() 메소드 실행");
+		SqlMapClient mapper = MyAppSqlConfig.getSqlMapInstance();
+		GuestbookList guestbookList = null;
+		GuestbookDAO dao = GuestbookDAO.getInstance();
+		
+		try {
+			int pageSize = 10;
+			// 내용에 검색어(내용)를 포함하는 글의 개수를 얻어온다.
+			int totalCount = dao.selectCountMemo(mapper, item); 
+			// System.out.println(totalCount);
+			guestbookList = new GuestbookList(pageSize, totalCount, currentPage);
+			
+			// startNo, endNo만 sql 명령으로 넘겨줄 때는 데이터 타입이 같기 때문에 HashMap을 이용했지만 
+			// category, item을 같이 넘겨야 하므로 데이터 타입이 다르기 때문에 별도의 클래스를 만들고
+			// 클래스 객체에 데이터를 담아서 넘겨줘야 한다.
+			Param param = new Param();
+			param.setStartNo(guestbookList.getStartNo());
+			param.setEndNo(guestbookList.getEndNo());
+			param.setItem(item);
+			// System.out.println(param);
+			
+			// 내용에 검색어를 포함하는 1페이지 분량의 글을 얻어와서 GuestbookList 클래스의 ArrayList에 저장한다.
+			guestbookList.setList(dao.selectListMemo(mapper, param));
+			System.out.println(guestbookList);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		return guestbookList;
 	}
 	
+	
+	public GuestbookList selectListName(int currentPage, String item) {
+		System.out.println("SelectService 클래스의 selectListName() 메소드 실행");
+		SqlMapClient mapper = MyAppSqlConfig.getSqlMapInstance();
+		GuestbookList guestbookList = null;
+		GuestbookDAO dao = GuestbookDAO.getInstance();
+		
+		try {
+			int pageSize = 10;
+			int totalCount = dao.selectCountMemo(mapper, item); 
+			guestbookList = new GuestbookList(pageSize, totalCount, currentPage);
+			
+			Param param = new Param();
+			param.setStartNo(guestbookList.getStartNo());
+			param.setEndNo(guestbookList.getEndNo());
+			param.setItem(item);
+			
+			guestbookList.setList(dao.selectListName(mapper, param));
+			System.out.println(guestbookList);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return guestbookList;
+	}
+	
+	public GuestbookList selectListMemoName(int currentPage, String item) {
+		System.out.println("SelectService 클래스의 selectListMemoName() 메소드 실행");
+		SqlMapClient mapper = MyAppSqlConfig.getSqlMapInstance();
+		GuestbookList guestbookList = null;
+		GuestbookDAO dao = GuestbookDAO.getInstance();
+		
+		try {
+			int pageSize = 10;
+			int totalCount = dao.selectCountMemoName(mapper, item); 
+			guestbookList = new GuestbookList(pageSize, totalCount, currentPage);
+			
+			Param param = new Param();
+			param.setStartNo(guestbookList.getStartNo());
+			param.setEndNo(guestbookList.getEndNo());
+			param.setItem(item);
+			
+			guestbookList.setList(dao.selectListMemoName(mapper, param));
+			System.out.println(guestbookList);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return guestbookList;
+	}
 }
+
+
+
+
+
+
+
+
+
+

@@ -88,7 +88,6 @@
 							type="button" 
 							value="삭제" 
 							onclick="location.href='selectByIdx.jsp?idx=<%=vo.getIdx()%>&currentPage=<%=guestbookList.getCurrentPage()%>&job=delete'">
-						
 						<br/>
 						<%=vo.getMemo().replace("<", "&lt;").replace(">", "&gt;").replace("\r\n", "<br/>")%>
 					</td>
