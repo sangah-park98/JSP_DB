@@ -1,7 +1,8 @@
 <%@page import="com.tjoeun.onLinepoll.PollWrite"%>
 <%@page import="com.tjoeun.onLinepoll.PollRead"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +10,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-<!-- pollRead.jsp에서 넘어오는 투표한 항목을 받아서 득표수를 증가시켜 텍스트 파일에 저장한다. -->
-<%
+
+	<!-- pollRead.jsp에서 넘어오는 투표한 항목을 받아서 득표수를 증가시켜 텍스트 파일에 저장한다. -->
+	<%
 // 	post 방식으로 데이터가 넘어올 때 한글 깨짐을 방지한다. 일단 적고 시작하기
 	request.setCharacterEncoding("UTF-8");
 //	pollRead.jsp에서 넘어오는 투표 데이터를 받는다.

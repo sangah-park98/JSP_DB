@@ -1,6 +1,7 @@
 <%@page import="com.tjoeun.onLinepoll.PollRead"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +13,8 @@
 </head>
 <body>
 
-<!-- 투표 항목이 저장된 텍스트 파일을 읽어서 웹 브라우저에 출력한다. -->
-<%
+	<!-- 투표 항목이 저장된 텍스트 파일을 읽어서 웹 브라우저에 출력한다. -->
+	<%
 //	이클립스는 프로젝트를 실행하면 프로젝트를 이클립스가 내부적으로 사용하는 웹 서버에 복사하고 실행한다.
 //	"/" => 폴더의 최상위 경로
 //	out.println(application.getRealPath("/") 메소드를 실행하면 프로젝트가 실행되는 실제(real) 경로(path)를 얻어온다.
@@ -38,40 +39,41 @@
 	
 %>
 
-<!-- 
+	<!-- 
 	cellspacing: 셀과 셀 사이의 간격
 	cellpadding: 셀 안여백, 셀을 구성하는 선과 셀 내부의 문자와의 간격
  -->
-<form action="pollWrite.jsp" method="post">
-<table border="1" width="500" align="center" cellspacing="0" cellpadding="5">
-	<tr> <!-- 줄 -->
-		<th> <!-- 칸, 표의 첫 줄 또는 첫 열을 구성하는 칸, 굵게 및 가운데 정렬돼서 표시된다. -->
-			<%=poll.get(0)%>
-		</th>
-	</tr>
-<%
+	<form action="pollWrite.jsp" method="post">
+		<table border="1" width="500" align="center" cellspacing="0"
+			cellpadding="5">
+			<tr>
+				<!-- 줄 -->
+				<th>
+					<!-- 칸, 표의 첫 줄 또는 첫 열을 구성하는 칸, 굵게 및 가운데 정렬돼서 표시된다. --> <%=poll.get(0)%>
+				</th>
+			</tr>
+			<%
 //	투표 항목의 개수만큼 반복하며 radio 버튼과 투표 항목을 출력한다.
 	for(int i=1; i<=itemCount; i++){
 %>
-	<tr>
-		<td> <!-- 칸, 표의 첫 줄 또는 첫 열을 제외한 나머지를 구성하는 칸 -->
-			<input type="radio" name="poll" value="<%=i%>"> &nbsp
-			<%=poll.get(i)%>
-		</td>
-	</tr>
-<% 
+			<tr>
+				<td>
+					<!-- 칸, 표의 첫 줄 또는 첫 열을 제외한 나머지를 구성하는 칸 --> <input type="radio"
+					name="poll" value="<%=i%>"> &nbsp <%=poll.get(i)%>
+				</td>
+			</tr>
+			<% 
 	}
 %>
-	<!-- 투표하기 버튼과 결과보기 버튼을 만든다. -->
-	<tr>
-		<td align="center"> 
-			<input type="submit" value="투표하기"/>
-			<input type="button" value="결과보기" onclick="location.href='pollResult.jsp'"/>
-		</td>
-	</tr>
-	
-</table>
-</form>
+			<!-- 투표하기 버튼과 결과보기 버튼을 만든다. -->
+			<tr>
+				<td align="center"><input type="submit" value="투표하기" /> <input
+					type="button" value="결과보기" onclick="location.href='pollResult.jsp'" />
+				</td>
+			</tr>
+
+		</table>
+	</form>
 
 </body>
 </html>
