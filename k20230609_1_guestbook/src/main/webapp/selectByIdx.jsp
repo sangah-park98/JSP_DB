@@ -35,9 +35,9 @@
 		// out.println("location.href='list.jsp?currentPage=" + currentPage + "'");
 		out.println("</script>");
 	} else {
-		// 수정 또는 삭제할 글이 존재하면 수정 버튼이 클릭된 경우 수정할 글을 브라우저에 보여주는 페이지
-		// (update.jsp)로 삭제 버튼이 클릭된 경우 삭제할 글을 브라우저에 보여주는 페이지(delete.jsp)로
-		// request 영역에 얻어온 글, 돌아갈 페이지 번호, 줄바꿈에 사용할 "\r\n"울 저장해서 넘겨준다.
+		// 수정 또는 삭제할 글이 존재하면 수정 버튼이 클릭된 경우 수정할 글을 브라우저에 보여주는 페이지(update.jsp)로 
+		// 삭제 버튼이 클릭된 경우 삭제할 글을 브라우저에 보여주는 페이지(delete.jsp)로
+		// request 영역에 얻어온 글, 돌아갈 페이지 번호, 줄바꿈에 사용할 "\r\n"을 저장해서 넘겨준다.
 		
 		request.setAttribute("vo", vo);
 		request.setAttribute("currentPage", currentPage);

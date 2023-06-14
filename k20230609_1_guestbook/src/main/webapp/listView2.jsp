@@ -90,7 +90,17 @@
 								<!-- 이름에 태그가 먹지않도록 replace 함수를 적용한다. -->
 								<c:set var="name" value="${fn:replace(vo.name, '<', '&lt;')}"></c:set>
 								<c:set var="name" value="${fn:replace(name, '>', '&gt;')}"></c:set>
-								${name}(${vo.ip})님이 
+								
+								<!-- 이름에 포함된 검색어를 강조해서 표시한다. -->
+								<c:if test="${category == null || category == '내용'}">
+									${name}
+								</c:if>
+								<c:if test="${category == '이름' || category == '내용+이름'}">
+									<!-- name에 저장된 모든 검색어를 search로 치환한다. -->
+									<c:set var="search" value="<span>${item}</span>"/>
+									${fn:replace(name, item, search)}
+								</c:if>	
+								(${vo.ip})님이 
 								
 								<!-- 오늘 작성된 글은 시간만 어제 이전에 작성된 글은 날짜만 출력한다. -->
 								<%--
@@ -134,11 +144,13 @@
 								<c:set var="memo" value="${fn:replace(memo, enter, '<br/>')}"></c:set>
 								
 								<!-- 내용에 포함된 검색어를 강조해서 표시한다. -->
-								<c:if test="${category == null || category == '이름'}"></c:if>
-								${memo}
-								<c:if test="${category == '내용' || category == '내용+이름'}"></c:if>
+								<c:if test="${category == null || category == '이름'}">
+									${memo}
+								</c:if>
+								<c:if test="${category == '내용' || category == '내용+이름'}">
 									<c:set var="search" value="<span>${item}</span>"/>
 									${fn:replace(memo, item, search)}
+								</c:if>	
 							</td>						
 						</tr>
 					</table>

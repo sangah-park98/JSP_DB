@@ -61,7 +61,7 @@
 			</td>
 		</tr>
 	</table>
-	<!-- 수정할 글번호와 수정 후 돌아갈 페이지 번호를 hidden으로 저장해서 deleteOK.jsp로 넘긴다. -->
+	<!-- 수정할 글번호와 수정 후 돌아갈 페이지 번호를 hidden으로 저장해서 updateOK.jsp로 넘긴다. -->
 	<input type="hidden" name="idx" value="${vo.idx}"/>
 	<input type="hidden" name="currentPage" value="${currentPage}"/>
 </form>
