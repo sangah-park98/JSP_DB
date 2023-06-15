@@ -85,14 +85,38 @@ $(() => {
 			}
 		});
 	});
-	
-	
 });
 
+//	수정 버튼이 클릭되면 update.jsp로 폼에 입력된 데이터를 전송하는 함수
+function mySubmitUpdate(obj) {
+	if(!obj.category.value || obj.category.value.trim().length == 0) {
+		alert('수정할 카테고리를 입력하세요.');
+		obj.category.value = '';
+		obj.category.focus();
+	} else {
+		// 인수로 넘어온 폼의 action 페이지를 변경한다.
+		obj.action = 'update.jsp';
+		// action 페이지를 호출하고 폼의 데이터를 전송한다.
+		obj.submit(); // submit 버튼 클릭한 것
+	}
+}
 
 
+function mySubmitDelete(obj) {
+	obj.action = 'delete.jsp';
+	obj.submit(); 
+}
+
+function mySubmitRestore(obj) {
+	obj.action = 'restore.jsp';
+	obj.submit(); 
+}
 
 
+function mySubmitReport(obj) {
+	obj.action = 'report.jsp';
+	obj.submit(); 
+}
 
 
 

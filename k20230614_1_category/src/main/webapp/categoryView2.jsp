@@ -44,17 +44,71 @@
 			<input type="text" name="gup" value="${vo.gup}" size="1"/>
 			<input type="text" name="lev" value="${vo.lev}" size="1"/>
 			<input type="text" name="seq" value="${vo.seq}" size="1"/>
-			<span>${vo.category}</span>
+			
+			<!-- 카테고리 레벨(lev)에 따른 들여쓰기를 한다. -->
+			<c:if test="${vo.lev > 0}">
+				<c:forEach var="i" begin="1" end="${vo.lev}" step="1">
+					&nbsp;&nbsp;&nbsp;&nbsp;
+				</c:forEach>
+					<img src="./images/arrow2.png" width="20"/>
+			</c:if>
+			
+			<c:if test="${vo.deleteCheck == 'YES'}">
+				삭제된 카테고리 입니다.
+			</c:if>
+			<c:if test="${vo.deleteCheck != 'YES'}">
+				<c:if test="${vo.deleteReport > 10}">
+					신고 만땅 카테고리
+				</c:if>
+				<c:if test="${vo.deleteReport <= 10}">
+					<span>${vo.category}(신고횟수: ${vo.deleteReport})</span>
+				</c:if>
+			</c:if>
 		</div>
 		
-		<div class="col-md-3">
-			<input class="sub_category form-control" type="text" name="category"/>
-		</div>
-		<div class="col-md-2">
-			<input class="btn btn-outline-primary" type="submit" value="서브 카테고리 만들기"/>
-		</div>
+		<c:if test="${vo.deleteReport > 10}">
+			<div class="col-md-3">
+				<input class="sub_category form-control" type="text" disabled="disabled"/>
+			</div>
+		
+		</c:if>
+		<c:if test="${vo.deleteReport <= 10}">
+			<div class="col-md-3">
+				<input class="sub_category form-control" type="text" name="category"/>
+			</div>
+			<div class="col-md-5">
+				<input class="btn btn-outline-primary" type="submit" value="서브 카테고리 만들기"/>
+				
+				<c:if test="${vo.deleteCheck == 'YES'}"> <!-- 삭제된 카테고리인가 -->
+					<!-- <input class="btn btn-outline-danger" type="button" value="삭제" disabled="disabled"/> -->
+					<input class="btn btn-outline-success" type="button" value="복구"
+						onclick="mySubmitRestore(${formName})"/>
+				</c:if>
+				
+				<c:if test="${vo.deleteCheck != 'YES'}">
+					<input class="btn btn-outline-danger" type="button" value="삭제"
+						 onclick="mySubmitDelete(${formName})"/>
+					<!-- <input class="btn btn-outline-danger" type="button" value="복구" disabled="disabled"/> -->
+				</c:if>
+				
+				<input class="btn btn-outline-info" type="button" value="수정"
+					onclick="mySubmitUpdate(${formName})"/>
+				<input class="btn btn-outline-warning" type="button" value="신고"
+					onclick="mySubmitReport(${formName})"/>
+			</div>
+		</c:if>
 	</form>
 </c:forEach>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
