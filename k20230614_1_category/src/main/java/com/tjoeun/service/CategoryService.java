@@ -47,8 +47,6 @@ public class CategoryService {
 		// 테이블에서 얻어온 전체 카테고리 목록을 CategoryList 클래스의 ArrayList에 저장한다.
 		categoryList.setList(CategoryDAO.getInstance().selectList(mapper));
 		System.out.println(categoryList);
-		
-		
 		mapper.close();
 		return categoryList;
 	}
