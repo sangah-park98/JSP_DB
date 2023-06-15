@@ -33,7 +33,7 @@
 <!-- 카테고리 개수만큼 반복하며 카테고리 목록을 출력하고 서브 카테고리를 입력받는다. -->
 <%-- ${categoryList} --%>
 <c:forEach var="vo" items="${categoryList.list}">
-	<!-- 서브 카테고리를 입력하는 모든 폼에 다른 name 속성이 지정되야 식별이 가능하므로 폼 이름을 만든다. -->
+	<!-- 서브 카테고리를 입력하는 모든 폼에 다른 name 속성이 지정돼야 식별이 가능하므로 폼 이름을 만든다. -->
 	<c:set var="formName" value="form${vo.idx}"></c:set>
 
 	<!-- jQuery로 서브 카테고리 입력 폼 체크 -->
