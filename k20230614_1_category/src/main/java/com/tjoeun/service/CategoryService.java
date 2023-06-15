@@ -62,9 +62,9 @@ public class CategoryService {
       CategoryDAO dao = CategoryDAO.getInstance();
       
       //   서브 카테고리가 삽입될 위치를 결정하기 위해서 lev와 sql을 각각 1씩 증가시킨다.
-      //   서브 카테고리의 레벨은 부모 카테고리의 레벨보다 1크다
+      //   서브 카테고리의 레벨은 부모 카테고리의 레벨보다 1 크다.
       vo.setLev(vo.getLev() + 1);
-      //   서브 카테고리가 부모 카테고리 바로 아래 나와야 하므로 출력 순서가 부모 카테고리 보다 1 크다
+      //   서브 카테고리가 부모 카테고리 바로 아래 나와야 하므로 출력 순서가 부모 카테고리보다 1 크다.
       vo.setSeq(vo.getSeq() + 1);
       
       //   서브 카테고리를 위치에 맞게 삽입하기 위해서 같은 카테고리 그룹(gup)의 카테고리 출력 순서(seq)를
@@ -76,7 +76,6 @@ public class CategoryService {
       
       //   서브 카테고리가 저장될 위치가 확보되면 서브 카테고리를 테이블에 저장하는 메소드를 호출한다.
       dao.reply(mapper, vo); // insert
-      
       mapper.commit();
       mapper.close();
    }
